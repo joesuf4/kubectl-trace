@@ -3,9 +3,9 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/iovisor/kubectl-trace/pkg/logs"
-	"github.com/iovisor/kubectl-trace/pkg/meta"
-	"github.com/iovisor/kubectl-trace/pkg/tracejob"
+	"github.com/joesuf4/kubectl-trace/pkg/logs"
+	"github.com/joesuf4/kubectl-trace/pkg/meta"
+	"github.com/joesuf4/kubectl-trace/pkg/tracejob"
 	"github.com/spf13/cobra"
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/cli-runtime/pkg/genericclioptions"

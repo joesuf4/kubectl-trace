@@ -14,7 +14,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/iovisor/kubectl-trace/pkg/docker"
+	"github.com/joesuf4/kubectl-trace/pkg/docker"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
@@ -57,8 +57,8 @@ const (
 
 var (
 	ContainerDependencies = []string{
-		"quay.io/iovisor/target-ruby",
-		"quay.io/iovisor/kubectl-trace-init",
+		"quay.io/joesuf4/target-ruby",
+		"quay.io/joesuf4/kubectl-trace-init",
 	}
 )
 
@@ -359,7 +359,7 @@ func (k *KubectlTraceSuite) runWithoutErrorWithStdin(input string, command strin
 }
 
 func (k *KubectlTraceSuite) createRubyTarget(namespace, name string, args ...string) (string, error) {
-	image := fmt.Sprintf("localhost:%d/iovisor/target-ruby:latest", RegistryRemotePort)
+	image := fmt.Sprintf("localhost:%d/joesuf4/target-ruby:latest", RegistryRemotePort)
 	command := append([]string{"./fork-from-args"}, args...)
 
 	clientConfig, err := clientcmd.BuildConfigFromFlags("", k.kubeConfigPath)

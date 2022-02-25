@@ -1,4 +1,4 @@
-module github.com/iovisor/kubectl-trace
+module github.com/joesuf4/kubectl-trace
 
 go 1.15
 
@@ -8,6 +8,7 @@ require (
 	github.com/evanphx/json-patch v4.9.0+incompatible
 	github.com/fntlnz/mountinfo v0.0.0-20171106231217-40cb42681fad
 	github.com/fsouza/fake-gcs-server v1.29.0
+	github.com/iovisor/kubectl-trace v0.1.2
 	github.com/kr/pretty v0.2.1 // indirect
 	github.com/mholt/archiver/v3 v3.5.0
 	github.com/spf13/afero v1.3.1

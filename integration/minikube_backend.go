@@ -2,8 +2,8 @@ package integration
 
 import (
 	"fmt"
-	"github.com/iovisor/kubectl-trace/pkg/cmd"
-	"github.com/iovisor/kubectl-trace/pkg/docker"
+	"github.com/joesuf4/kubectl-trace/pkg/cmd"
+	"github.com/joesuf4/kubectl-trace/pkg/docker"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"golang.org/x/mod/semver"

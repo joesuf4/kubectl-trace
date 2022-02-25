@@ -2,13 +2,13 @@ package integration
 
 import (
 	"fmt"
-	"github.com/iovisor/kubectl-trace/pkg/docker"
+	"github.com/joesuf4/kubectl-trace/pkg/docker"
 	"os/exec"
 	"strconv"
 	"strings"
 	"time"
 
-	"github.com/iovisor/kubectl-trace/pkg/cmd"
+	"github.com/joesuf4/kubectl-trace/pkg/cmd"
 	"github.com/stretchr/testify/assert"
 
 	"sigs.k8s.io/kind/pkg/cluster"

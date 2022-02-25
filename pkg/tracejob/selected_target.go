@@ -46,7 +46,7 @@ import (
 
 	v1 "k8s.io/api/core/v1"
 
-	"github.com/iovisor/kubectl-trace/pkg/errors"
+	"github.com/joesuf4/kubectl-trace/pkg/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/apimachinery/pkg/labels"

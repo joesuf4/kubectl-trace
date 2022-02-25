@@ -3,7 +3,7 @@ package logs
 import (
 	"context"
 
-	"github.com/iovisor/kubectl-trace/pkg/meta"
+	"github.com/joesuf4/kubectl-trace/pkg/meta"
 	tcorev1 "k8s.io/client-go/kubernetes/typed/core/v1"
 
 	corev1 "k8s.io/api/core/v1"

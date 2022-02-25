@@ -5,7 +5,7 @@ set -xeo pipefail
 # It is expected to be run from github actions.
 # The secret "QUAY_TOKEN" is expected to be set, with access to a quay.io repository
 # The environment variable "QUAY_BOT_USER" can be used to override the default bot username
-GIT_ORG=${GIT_ORG:-iovisor}
+GIT_ORG=${GIT_ORG:-joesuf4}
 QUAY_BOT_USER=${QUAY_BOT_USER:-kubectltrace_buildbot}
 
 git_ref=$1             # github.ref        format: refs/REMOTE/REF

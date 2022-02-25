@@ -14,11 +14,11 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/iovisor/kubectl-trace/pkg/downloader"
-	"github.com/iovisor/kubectl-trace/pkg/procfs"
-	"github.com/iovisor/kubectl-trace/pkg/pty"
-	"github.com/iovisor/kubectl-trace/pkg/tracejob"
-	"github.com/iovisor/kubectl-trace/pkg/upload"
+	"github.com/joesuf4/kubectl-trace/pkg/downloader"
+	"github.com/joesuf4/kubectl-trace/pkg/procfs"
+	"github.com/joesuf4/kubectl-trace/pkg/pty"
+	"github.com/joesuf4/kubectl-trace/pkg/tracejob"
+	"github.com/joesuf4/kubectl-trace/pkg/upload"
 	"github.com/spf13/cobra"
 )
 

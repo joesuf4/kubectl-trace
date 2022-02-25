@@ -6,11 +6,11 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/iovisor/kubectl-trace/pkg/attacher"
-	"github.com/iovisor/kubectl-trace/pkg/downloader"
-	"github.com/iovisor/kubectl-trace/pkg/meta"
-	"github.com/iovisor/kubectl-trace/pkg/signals"
-	"github.com/iovisor/kubectl-trace/pkg/tracejob"
+	"github.com/joesuf4/kubectl-trace/pkg/attacher"
+	"github.com/joesuf4/kubectl-trace/pkg/downloader"
+	"github.com/joesuf4/kubectl-trace/pkg/meta"
+	"github.com/joesuf4/kubectl-trace/pkg/signals"
+	"github.com/joesuf4/kubectl-trace/pkg/tracejob"
 	"github.com/spf13/cobra"
 	"k8s.io/apimachinery/pkg/util/uuid"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
@@ -26,7 +26,7 @@ var (
 	// ImageTag represents the tag to fetch for ImageName
 	ImageTag = "latest"
 	// InitImageName represents the default init container image
-	InitImageName = "quay.io/iovisor/kubectl-trace-init"
+	InitImageName = "artifactory.blackstone.com/docker/schaefj/kubectl-trace-init"
 	// InitImageTag represents the tag to fetch for InitImage
 	InitImageTag = "latest"
 	// DefaultDeadline is the maximum time a tracejob is allowed to run, in seconds

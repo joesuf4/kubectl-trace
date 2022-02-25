@@ -6,8 +6,8 @@ import (
 	"text/tabwriter"
 	"time"
 
-	"github.com/iovisor/kubectl-trace/pkg/meta"
-	"github.com/iovisor/kubectl-trace/pkg/tracejob"
+	"github.com/joesuf4/kubectl-trace/pkg/meta"
+	"github.com/joesuf4/kubectl-trace/pkg/tracejob"
 	"github.com/spf13/cobra"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"

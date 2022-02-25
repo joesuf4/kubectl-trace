@@ -10,7 +10,7 @@ import (
 	"strconv"
 
 	jsonpatch "github.com/evanphx/json-patch"
-	"github.com/iovisor/kubectl-trace/pkg/meta"
+	"github.com/joesuf4/kubectl-trace/pkg/meta"
 	batchv1 "k8s.io/api/batch/v1"
 	apiv1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"

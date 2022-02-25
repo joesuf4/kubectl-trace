@@ -1,7 +1,7 @@
 ![Kubectl trace Logo](docs/logo/logo-sm.png)
 
 `kubectl trace` is a kubectl plugin that allows you to schedule the execution
-of [bpftrace](https://github.com/iovisor/bpftrace) programs in your Kubernetes cluster.
+of [bpftrace](https://github.com/joesuf4/bpftrace) programs in your Kubernetes cluster.
 
 ![Screenshot showing the read.bt program for kubectl-trace](docs/img/intro.png)
 
@@ -43,14 +43,14 @@ You're ready to go!
 
 ### Pre-built binaries
 
-See the [release](https://github.com/iovisor/kubectl-trace/releases) page for the full list of pre-built assets.
+See the [release](https://github.com/joesuf4/kubectl-trace/releases) page for the full list of pre-built assets.
 
 The commands here show `amd64` versions, `386` versions are available in the releases page.
 
 **Linux**
 
 ```bash
-curl -L -o kubectl-trace.tar.gz https://github.com/iovisor/kubectl-trace/releases/download/v0.1.0-rc.1/kubectl-trace_0.1.0-rc.1_linux_amd64.tar.gz
+curl -L -o kubectl-trace.tar.gz https://github.com/joesuf4/kubectl-trace/releases/download/v0.1.0-rc.1/kubectl-trace_0.1.0-rc.1_linux_amd64.tar.gz
 tar -xvf kubectl-trace.tar.gz
 mv kubectl-trace /usr/local/bin/kubectl-trace
 ```
@@ -58,7 +58,7 @@ mv kubectl-trace /usr/local/bin/kubectl-trace
 **OSX**
 
 ```bash
-curl -L -o kubectl-trace.tar.gz https://github.com/iovisor/kubectl-trace/releases/download/v0.1.0-rc.1/kubectl-trace_0.1.0-rc.1_darwin_amd64.tar.gz
+curl -L -o kubectl-trace.tar.gz https://github.com/joesuf4/kubectl-trace/releases/download/v0.1.0-rc.1/kubectl-trace_0.1.0-rc.1_darwin_amd64.tar.gz
 tar -xvf kubectl-trace.tar.gz
 mv kubectl-trace /usr/local/bin/kubectl-trace
 ```
@@ -68,7 +68,7 @@ mv kubectl-trace /usr/local/bin/kubectl-trace
 
 In PowerShell v5+
 ```powershell
-$url = "https://github.com/iovisor/kubectl-trace/releases/download/v0.1.0-rc.1/kubectl-trace_0.1.0-rc.1_windows_amd64.zip"
+$url = "https://github.com/joesuf4/kubectl-trace/releases/download/v0.1.0-rc.1/kubectl-trace_0.1.0-rc.1_windows_amd64.zip"
 $output = "$PSScriptRoot\kubectl-trace.zip"
 
 Invoke-WebRequest -Uri $url -OutFile $output
@@ -80,7 +80,7 @@ Expand-Archive "$PSScriptRoot\kubectl-trace.zip" -DestinationPath "$PSScriptRoot
 Using go modules, you can build kubectl-trace at any git tag:
 
 ```
-GO111MODULE=on go get github.com/iovisor/kubectl-trace/cmd/kubectl-trace@latest
+GO111MODULE=on go get github.com/joesuf4/kubectl-trace/cmd/kubectl-trace@latest
 ```
 
 This will download and compile `kubectl-trace` so that you can use it as a kubectl plugin with `kubectl trace`, note that you will need to be on a recent version of go which supports go modules.
@@ -88,7 +88,7 @@ This will download and compile `kubectl-trace` so that you can use it as a kubec
 To keep track of the ref you used to build, you can add an ldflag at build time to set this to match the ref provided to go modules:
 
 ```
-> GO111MODULE=on go get -ldflags='-X github.com/iovisor/kubectl-trace/pkg/version.gitCommit=v0.1.2' github.com/iovisor/kubectl-trace/cmd/kubectl-trace@v0.1.2
+> GO111MODULE=on go get -ldflags='-X github.com/joesuf4/kubectl-trace/pkg/version.gitCommit=v0.1.2' github.com/joesuf4/kubectl-trace/cmd/kubectl-trace@v0.1.2
 > $GOHOME/bin/kubectl-trace version
 git commit: v0.1.2
 build date: 2021-08-10 12:38:37.921341766 -0400 EDT m=+0.034327432
@@ -99,7 +99,7 @@ build date: 2021-08-10 12:38:37.921341766 -0400 EDT m=+0.034327432
 ### Packages
 
 You can't find the package for your distro of choice?
-You are very welcome and encouraged to create it and then [open an issue](https://github.com/iovisor/kubectl-trace/issues/new) to inform us for review.
+You are very welcome and encouraged to create it and then [open an issue](https://github.com/joesuf4/kubectl-trace/issues/new) to inform us for review.
 
 #### Arch - AUR
 
@@ -349,17 +349,17 @@ kubectl trace run ip-180-12-0-152.ec2.internal -f read.bt --patch mypatch.json -
 
 ### More bpftrace programs
 
-Need more programs? Look [here](https://github.com/iovisor/bpftrace/tree/master/tools).
+Need more programs? Look [here](https://github.com/joesuf4/bpftrace/tree/master/tools).
 
 ## Contributing
 
 Already pumped up to commit some code? Here are some resources to join the
-discussions in the [IOVisor](https://www.iovisor.org/) community and see
+discussions in the [IOVisor](https://www.joesuf4.org/) community and see
 what you want to work on.
 
-* _Mailing List:_ http://lists.iovisor.org/mailman/listinfo/iovisor-dev
-* _IRC:_ #iovisor at irc.oftc.net
+* _Mailing List:_ http://lists.joesuf4.org/mailman/listinfo/joesuf4-dev
+* _IRC:_ #joesuf4 at irc.oftc.net
 * _Slack_ #kubectl-trace in the [Kubernetes Slack](http://kubernetes.slack.com/)
-* _Kubectl Trace Issue Tracker:_ [Github Issues](https://github.com/iovisor/kubectl-trace/issues)
+* _Kubectl Trace Issue Tracker:_ [Github Issues](https://github.com/joesuf4/kubectl-trace/issues)
 
 Special thanks to [Ramon Gilabert](https://github.com/RamonGilabert) for the logo.

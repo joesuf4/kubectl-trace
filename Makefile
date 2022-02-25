@@ -74,7 +74,7 @@ image/build-init:
 	$(DOCKER) build \
 		--progress=$(DOCKER_BUILD_PROGRESS) \
 		-t $(IMAGE_INITCONTAINER_BRANCH) \
-		-f ./build/Dockerfile.initcontainer \
+		-f ./build/Dockerfile \
 		${IMAGE_BUILD_FLAGS_EXTRA} \
 		./build
 	$(DOCKER) tag "$(IMAGE_INITCONTAINER_BRANCH)" "$(IMAGE_INITCONTAINER_COMMIT)"

@@ -7,7 +7,7 @@ import (
 	"os/signal"
 	"strconv"
 
-	"github.com/iovisor/kubectl-trace/pkg/downloader"
+	"github.com/joesuf4/kubectl-trace/pkg/downloader"
 	"github.com/spf13/cobra"
 )
 
