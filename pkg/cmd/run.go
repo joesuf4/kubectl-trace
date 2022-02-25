@@ -26,7 +26,7 @@ var (
 	// ImageTag represents the tag to fetch for ImageName
 	ImageTag = "latest"
 	// InitImageName represents the default init container image
-	InitImageName = "docker.io/schaefj/kubectl-trace-init"
+	InitImageName = "artifactory.blackstone.com/docker/schaefj/kubectl-trace-init"
 	// InitImageTag represents the tag to fetch for InitImage
 	InitImageTag = "latest"
 	// DefaultDeadline is the maximum time a tracejob is allowed to run, in seconds
