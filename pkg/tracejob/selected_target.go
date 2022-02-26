@@ -210,7 +210,7 @@ func NodeIsAllocatable(clientset kubernetes.Interface, hostname string) (bool, e
 		nonTerminalPods = append(nonTerminalPods, &pod)
 	}
 
-	fmt.Printf("Got %d pods, %d non-terminal pods", len(allPods.Items), len(nonTerminalPods))
+	fmt.Printf("Got %d pods, %d non-terminal pods\n", len(allPods.Items), len(nonTerminalPods))
 
 	nodeClient := clientset.CoreV1().Nodes()
 	node, err := nodeClient.Get(context.TODO(), hostname, metav1.GetOptions{})
