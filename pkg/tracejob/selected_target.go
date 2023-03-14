@@ -138,6 +138,27 @@ func ResolveTraceJobTarget(clientset kubernetes.Interface, resource, container, 
 		if err != nil {
 			return nil, err
 		}
+
+		nodeClient := clientset.CoreV1().Nodes()
+		_allocatable, err := NodeIsAllocatable(clientset, pod.Spec.NodeName)
+		if err != nil {
+			return nil, err
+		}
+		if !_allocatable {
+			return nil, errors.NewErrorUnallocatable(fmt.Sprintf("Node %s is not allocatable", resourceID))
+		}
+		node, err := nodeClient.Get(context.TODO(), pod.Spec.NodeName, metav1.GetOptions{})
+		if err != nil {
+			return nil, errors.NewErrorInvalid(fmt.Sprintf("Failed to locate a node for %s %v", resourceID, err))
+		}
+
+		labels := node.GetLabels()
+		val, ok := labels["kubernetes.io/hostname"]
+		if !ok {
+			return nil, errors.NewErrorInvalid(fmt.Sprintf("label kubernetes.io/hostname not found in node"))
+		}
+		target.Node = val
+
 		return &target, nil
 	case "deploy", "deployment":
 		deployClient := clientset.AppsV1().Deployments(targetNamespace)
@@ -176,6 +197,25 @@ func ResolveTraceJobTarget(clientset kubernetes.Interface, resource, container, 
 		if err != nil {
 			return nil, err
 		}
+		nodeClient := clientset.CoreV1().Nodes()
+		allocatable, err := NodeIsAllocatable(clientset, selectedPod.Spec.NodeName)
+		if err != nil {
+			return nil, err
+		}
+		if !allocatable {
+			return nil, errors.NewErrorUnallocatable(fmt.Sprintf("Node %s is not allocatable", resourceID))
+		}
+		node, err := nodeClient.Get(context.TODO(), selectedPod.Spec.NodeName, metav1.GetOptions{})
+		if err != nil {
+			return nil, errors.NewErrorInvalid(fmt.Sprintf("Failed to locate a node for %s %v", resourceID, err))
+		}
+
+		labels := node.GetLabels()
+		val, ok := labels["kubernetes.io/hostname"]
+		if !ok {
+			return nil, errors.NewErrorInvalid(fmt.Sprintf("label kubernetes.io/hostname not found in node"))
+		}
+		target.Node = val
 
 		return &target, nil
 	default:
@@ -265,9 +305,8 @@ func resolvePodToTarget(podClient corev1.PodInterface, resourceID, container, ta
 	if pod.Spec.NodeName == "" {
 		return fmt.Errorf("cannot attach a trace program to a pod that is not currently scheduled on a node")
 	}
-
 	var targetContainer string
-	target.Node = pod.Spec.NodeName
+	target.Node = string(pod.Spec.NodeName)
 	target.PodUID = string(pod.UID)
 
 	if len(pod.Spec.Containers) == 1 {
@@ -289,5 +328,6 @@ func resolvePodToTarget(podClient corev1.PodInterface, resourceID, container, ta
 	if target.ContainerID == "" {
 		return fmt.Errorf("no containers found for the provided pod %s and container %s combination", pod.Name, targetContainer)
 	}
+
 	return nil
 }

@@ -259,7 +259,6 @@ func (nj *TraceJob) Job() *batchv1.Job {
 
 	commonMeta := *nj.Meta()
 	cm := nj.ConfigMap()
-
 	job := &batchv1.Job{
 		ObjectMeta: commonMeta,
 		Spec: batchv1.JobSpec{
@@ -297,6 +296,14 @@ func (nj *TraceJob) Job() *batchv1.Job {
 							VolumeSource: apiv1.VolumeSource{
 								HostPath: &apiv1.HostPathVolumeSource{
 									Path: "/lib/modules",
+								},
+							},
+						},
+						apiv1.Volume{
+							Name: "containerd-host",
+							VolumeSource: apiv1.VolumeSource{
+								HostPath: &apiv1.HostPathVolumeSource{
+									Path: "/var/lib/containerd",
 								},
 							},
 						},
@@ -379,7 +386,7 @@ func (nj *TraceJob) Job() *batchv1.Job {
 											apiv1.NodeSelectorRequirement{
 												Key:      "kubernetes.io/hostname",
 												Operator: apiv1.NodeSelectorOpIn,
-												Values:   []string{nj.Target.Node},
+												Values: []string{nj.Target.Node},
 											},
 										},
 									},
@@ -516,6 +523,11 @@ func (nj *TraceJob) Job() *batchv1.Job {
 			apiv1.VolumeMount{
 				Name:      "modules-host",
 				MountPath: "/lib/modules",
+				ReadOnly:  true,
+			},
+			apiv1.VolumeMount{
+				Name:      "containerd-host",
+				MountPath: "/var/lib/containerd",
 				ReadOnly:  true,
 			})
 	}
