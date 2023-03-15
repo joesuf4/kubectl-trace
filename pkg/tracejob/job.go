@@ -308,6 +308,14 @@ func (nj *TraceJob) Job() *batchv1.Job {
 							},
 						},
 						apiv1.Volume{
+							Name: "docker-host",
+							VolumeSource: apiv1.VolumeSource{
+								HostPath: &apiv1.HostPathVolumeSource{
+									Path: "/var/lib/docker",
+								},
+							},
+						},
+						apiv1.Volume{
 							Name: "sys",
 							VolumeSource: apiv1.VolumeSource{
 								HostPath: &apiv1.HostPathVolumeSource{
@@ -523,6 +531,11 @@ func (nj *TraceJob) Job() *batchv1.Job {
 			apiv1.VolumeMount{
 				Name:      "modules-host",
 				MountPath: "/lib/modules",
+				ReadOnly:  true,
+			},
+			apiv1.VolumeMount{
+				Name:      "docker-host",
+				MountPath: "/var/lib/dockerr",
 				ReadOnly:  true,
 			},
 			apiv1.VolumeMount{
