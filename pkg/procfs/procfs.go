@@ -56,7 +56,7 @@ func FindPidByPodContainer(podUID, containerID string) (string, error) {
 				//     /kubepods/burstable/pod{POD_ID}/{CONTAINER_ID}
 				//
 				// This "needle" that we look for in the mountinfo haystack should match one and only one container.
-				needle := path.Join(podUID, containerID)
+				needle := containerID
 				if strings.Contains(root, needle) {
 					return dname, nil
 				}
@@ -64,7 +64,7 @@ func FindPidByPodContainer(podUID, containerID string) (string, error) {
 		}
 	}
 
-	return "", fmt.Errorf("no process found for specified pod and container")
+	return "", fmt.Errorf("No process found for specified pod and container")
 }
 
 func FindPidsForContainer(pid string) ([]string, error) {

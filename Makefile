@@ -9,12 +9,12 @@ GIT_TAG    ?= $(shell git describe 2> /dev/null)
 GIT_BRANCH ?= $(shell git rev-parse --abbrev-ref HEAD 2>/dev/null)
 GIT_BRANCH_CLEAN := $(shell echo $(GIT_BRANCH) | sed -e "s/[^[:alnum:]]/-/g")
 
-GIT_ORG ?= iovisor
+GIT_ORG ?= joesuf4
 
 DOCKER_BUILD_PROGRESS ?= auto
 
-IMAGE_NAME_INITCONTAINER ?= quay.io/$(GIT_ORG)/kubectl-trace-init
-IMAGE_NAME_TRACERUNNER ?= quay.io/$(GIT_ORG)/kubectl-trace-runner
+IMAGE_NAME_INITCONTAINER ?= schaefj/kubectl-trace-init
+IMAGE_NAME_TRACERUNNER ?= schaefj/kubectl-trace-runner
 
 IMAGE_TRACERUNNER_BRANCH := $(IMAGE_NAME_TRACERUNNER):$(GIT_BRANCH_CLEAN)
 IMAGE_TRACERUNNER_COMMIT := $(IMAGE_NAME_TRACERUNNER):$(GIT_COMMIT)
@@ -28,13 +28,13 @@ IMAGE_INITCONTAINER_LATEST := $(IMAGE_NAME_INITCONTAINER):latest
 
 IMAGE_BUILD_FLAGS_EXTRA ?= # convenience to allow to specify extra build flags with env var, defaults to nil
 
-IMG_REPO ?= quay.io/iovisor/
+IMG_REPO ?= quay.io/joesuf4/
 IMG_SHA ?= latest
 
 BPFTRACEVERSION ?= "latest"
 
-LDFLAGS := -ldflags '-X github.com/iovisor/kubectl-trace/pkg/version.buildTime=$(shell date +%s) -X github.com/iovisor/kubectl-trace/pkg/version.gitCommit=${GIT_COMMIT} -X github.com/iovisor/kubectl-trace/pkg/cmd.ImageName=${IMAGE_NAME_TRACERUNNER} -X github.com/iovisor/kubectl-trace/pkg/cmd.ImageTag=${GIT_COMMIT} -X github.com/iovisor/kubectl-trace/pkg/cmd.InitImageName=${IMAGE_NAME_INITCONTAINER} -X github.com/iovisor/kubectl-trace/pkg/cmd.InitImageTag=${GIT_COMMIT}'
-TESTPACKAGES := $(shell go list ./... | grep -v github.com/iovisor/kubectl-trace/integration)
+LDFLAGS := -ldflags '-X github.com/joesuf4/kubectl-trace/pkg/version.buildTime=$(shell date +%s) -X github.com/joesuf4/kubectl-trace/pkg/version.gitCommit=${GIT_COMMIT} -X github.com/joesuf4/kubectl-trace/pkg/cmd.ImageName=${IMAGE_NAME_TRACERUNNER} -X github.com/joesuf4/kubectl-trace/pkg/cmd.ImageTag=${GIT_COMMIT} -X github.com/joesuf4/kubectl-trace/pkg/cmd.InitImageName=${IMAGE_NAME_INITCONTAINER} -X github.com/joesuf4/kubectl-trace/pkg/cmd.InitImageTag=${GIT_COMMIT}'
+TESTPACKAGES := $(shell go list ./... | grep -v github.com/joesuf4/kubectl-trace/integration)
 TEST_ONLY ?=
 
 kubectl_trace ?= _output/bin/kubectl-trace

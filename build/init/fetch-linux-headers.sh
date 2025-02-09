@@ -3,11 +3,11 @@
 set -ex
 
 LSB_FILE="/etc/lsb-release.host"
-OS_RELEASE_FILE="/etc/os-release.host"
+OS_RELEASE_FILE="/etc/os-release"
 TARGET_DIR="/usr/src"
 HOST_MODULES_DIR="/lib/modules.host"
 
-KERNEL_VERSION="${KERNEL_VERSION:-$(uname -r)}"
+KERNEL_VERSION="${KERNEL_VERSION:-$(uname -r|tr -d '[[:digits:].]')}"
 
 generate_headers()
 {
